@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedSeg-AI Polyp Segmentation</title>
+<meta name="description" content="Efficient and accurate polyp segmentation: a 3.2 M-parameter MobileNetV3 U-Net matches ResNet-34 at 1/19 of the compute, 17 ms per frame on one CPU thread. Husain Naqvi, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfd;--fg:#14161a;--muted:#5b6170;--card:#ffffff;--line:#e6e8ee;--accent:#2563eb;--accent-soft:#e8efff;--warn:#b45309}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1116;--fg:#e8eaf0;--muted:#9aa1b2;--card:#161a22;--line:#262c38;--accent:#6ea0ff;--accent-soft:#1b2640;--warn:#f59e0b}}
+:root[data-theme="dark"]{--bg:#0e1116;--fg:#e8eaf0;--muted:#9aa1b2;--card:#161a22;--line:#262c38;--accent:#6ea0ff;--accent-soft:#1b2640;--warn:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+.kicker{color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:13px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:.3em 0;font-weight:800}
+.lead{font-size:clamp(17px,2.4vw,20px);color:var(--muted);max-width:800px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--line);color:var(--fg);text-decoration:none;font-weight:600;font-size:14px;background:var(--card)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+section{padding:36px 0;border-bottom:1px solid var(--line)}
+h2{font-size:24px;margin:0 0 12px}
+h3{font-size:18px;margin:22px 0 8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:26px;color:var(--accent)}
+.stat span{color:var(--muted);font-size:13px}
+figure{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+figure img{width:100%;height:auto;display:block}
+figcaption{color:#555;font-size:13px;padding:6px 4px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+tr.best td{font-weight:700;color:var(--accent)}
+.note{background:var(--accent-soft);border-radius:10px;padding:14px 16px;margin:16px 0}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+.chain span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
+.chain span.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chain i{color:var(--muted);font-style:normal}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+footer{padding:28px 0 48px;color:var(--muted);font-size:14px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="kicker">Project 10 · Husain Naqvi · 2026</div>
+<h1>MedSeg-AI: efficient &amp; accurate medical image segmentation</h1>
+<p class="lead">Polyp segmentation in colonoscopy. Five candidate algorithm families and five hybrid methods are benchmarked for accuracy per millisecond of CPU, robustness on another hospital's data, and calibrated uncertainty.</p>
+<div class="btns"><a class="btn primary" href="https://github.com/Engr-HusainNaqvi/MedSeg-AI">GitHub repository</a><a class="btn" href="https://github.com/Engr-HusainNaqvi/MedSeg-AI/blob/main/docs/FINDINGS.md">Findings write-up</a></div>
+</div></header>
+<main class="wrap">
+<section>
+<h2>Headline</h2>
+<div class="stats">
+<div class="stat"><b>0.885</b><span>Dice, Kvasir-SEG test (MobileNetV3-L + TTA)</span></div>
+<div class="stat"><b>0.851</b><span>Dice, external hospital (CVC-ClinicDB, n = 612)</span></div>
+<div class="stat"><b>1/19</b><span>of ResNet-34's compute; statistically equal Dice (p = 0.85)</span></div>
+<div class="stat"><b>17 ms</b><span>per frame, one CPU thread, ONNX Runtime</span></div>
+<div class="stat"><b>0.905</b><span>external Dice after deferring the 20% most uncertain frames</span></div>
+</div>
+<figure><img src="figures/clinicdb_video_segmentation.gif" alt="The chosen model segmenting consecutive CVC-ClinicDB colonoscopy frames"><figcaption>The chosen model on consecutive frames from the external CVC-ClinicDB videos.</figcaption></figure>
+</section>
+<section>
+<h2>Figures</h2>
+<figure><img loading="lazy" src="figures/01_dataset_examples.png" alt="The data: Kvasir-SEG and CVC-ClinicDB frames with expert masks"><figcaption>The data: Kvasir-SEG and CVC-ClinicDB frames with expert masks.</figcaption></figure>
+<figure><img loading="lazy" src="figures/02_dataset_statistics.png" alt="Polyp size, position and colour statistics: what makes the task hard"><figcaption>Polyp size, position and colour statistics: what makes the task hard.</figcaption></figure>
+<figure><img loading="lazy" src="figures/03_augmentation.png" alt="Training augmentation"><figcaption>Training augmentation.</figcaption></figure>
+<figure><img loading="lazy" src="figures/04_study_design.png" alt="Study design: 5 candidate families × 5 hybrids, internal and external test sets"><figcaption>Study design: 5 candidate families × 5 hybrids, internal and external test sets.</figcaption></figure>
+<figure><img loading="lazy" src="figures/05_leaderboard.png" alt="Leaderboard of every method with 95% bootstrap confidence intervals"><figcaption>Leaderboard of every method with 95% bootstrap confidence intervals.</figcaption></figure>
+<figure><img loading="lazy" src="figures/06_pareto_accuracy_latency.png" alt="Accuracy vs. CPU time: the Pareto front"><figcaption>Accuracy vs. CPU time: the Pareto front.</figcaption></figure>
+<figure><img loading="lazy" src="figures/07_model_cost.png" alt="Model cost: parameters, GMACs and latency"><figcaption>Model cost: parameters, GMACs and latency.</figcaption></figure>
+<figure><img loading="lazy" src="figures/08_training_curves.png" alt="Training curves (validation Dice per epoch)"><figcaption>Training curves (validation Dice per epoch).</figcaption></figure>
+<figure><img loading="lazy" src="figures/09_metric_heatmap.png" alt="All metrics for all methods"><figcaption>All metrics for all methods.</figcaption></figure>
+<figure><img loading="lazy" src="figures/10_dice_distributions.png" alt="Per-image Dice distributions"><figcaption>Per-image Dice distributions.</figcaption></figure>
+<figure><img loading="lazy" src="figures/11_domain_shift.png" alt="Domain shift from Kvasir-SEG to CVC-ClinicDB"><figcaption>Domain shift from Kvasir-SEG to CVC-ClinicDB.</figcaption></figure>
+<figure><img loading="lazy" src="figures/12_qualitative_comparison.png" alt="Every model family on the same frames"><figcaption>Every model family on the same frames.</figcaption></figure>
+<figure><img loading="lazy" src="figures/13_dice_by_polyp_size.png" alt="Small polyps are hardest"><figcaption>Small polyps are hardest.</figcaption></figure>
+<figure><img loading="lazy" src="figures/14_failure_cases.png" alt="Failure cases"><figcaption>Failure cases.</figcaption></figure>
+<figure><img loading="lazy" src="figures/15_hybrid_ablation.png" alt="Hybrid ablation on the MobileNetV3-L U-Net"><figcaption>Hybrid ablation on the MobileNetV3-L U-Net.</figcaption></figure>
+<figure><img loading="lazy" src="figures/16_knowledge_distillation.png" alt="Hybrid A: ResNet-34 teacher → MobileNetV3 student"><figcaption>Hybrid A: ResNet-34 teacher → MobileNetV3 student.</figcaption></figure>
+<figure><img loading="lazy" src="figures/17_convcrf_refinement.png" alt="Hybrid C: ConvCRF refinement (a negative result)"><figcaption>Hybrid C: ConvCRF refinement (a negative result).</figcaption></figure>
+<figure><img loading="lazy" src="figures/18_uncertainty.png" alt="Hybrid D: MC-dropout uncertainty and risk–coverage"><figcaption>Hybrid D: MC-dropout uncertainty and risk–coverage.</figcaption></figure>
+<figure><img loading="lazy" src="figures/19_ensemble.png" alt="Hybrid E: three-model ensemble"><figcaption>Hybrid E: three-model ensemble.</figcaption></figure>
+<figure><img loading="lazy" src="figures/20_deployment_int8.png" alt="Deployment: ONNX Runtime fp32 vs. static INT8"><figcaption>Deployment: ONNX Runtime fp32 vs. static INT8.</figcaption></figure>
+<figure><img loading="lazy" src="figures/21_resolution_scaling.png" alt="Input resolution as an efficiency knob"><figcaption>Input resolution as an efficiency knob.</figcaption></figure>
+<figure><img loading="lazy" src="figures/22_paired_statistics.png" alt="Paired statistics: Wilcoxon tests and bootstrap CIs"><figcaption>Paired statistics: Wilcoxon tests and bootstrap CIs.</figcaption></figure>
+<figure><img loading="lazy" src="figures/23_classical_methods.png" alt="Classical ML baselines"><figcaption>Classical ML baselines.</figcaption></figure>
+<figure><img loading="lazy" src="figures/methods_cycle.gif" alt="Animation: every method on the same frames"><figcaption>Animation: every method on the same frames.</figcaption></figure>
+<figure><img loading="lazy" src="figures/threshold_sweep.gif" alt="Animation: threshold sweep"><figcaption>Animation: threshold sweep.</figcaption></figure>
+</section>
+<section><p style="color:var(--muted);font-size:14px">This is a research prototype, not a medical device. Kvasir-SEG (Jha et al., 2020) and CVC-ClinicDB (Bernal et al., 2015) are used under their research terms. © 2026 Husain Naqvi. All Rights Reserved.</p></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you refer to this work, please cite it as below."
+title: "MedSeg-AI: Efficient and Accurate Algorithms for Medical Image Segmentation (Polyp Segmentation)"
+authors:
+  - family-names: Naqvi
+    given-names: Husain
+version: 1.0.0
+date-released: 2026-11-09
+license: LicenseRef-All-Rights-Reserved
+repository-code: "https://github.com/Engr-HusainNaqvi/MedSeg-AI"
+url: "https://engr-husainnaqvi.github.io/MedSeg-AI/"
+keywords: [medical image segmentation, polyp segmentation, colonoscopy, efficient deep learning, MobileNetV3, SegFormer, U-Net, knowledge distillation, MC-dropout, uncertainty, ONNX, INT8, Kvasir-SEG, CVC-ClinicDB]
+references:
+  - type: conference-paper
+    authors:
+      - family-names: Jha
+        given-names: Debesh
+    title: "Kvasir-SEG: A Segmented Polyp Dataset"
+    collection-title: "MultiMedia Modeling (MMM 2020)"
+    year: 2020
+    doi: 10.1007/978-3-030-37734-2_37
+  - type: article
+    authors:
+      - family-names: Bernal
+        given-names: Jorge
+    title: "WM-DOVA maps for accurate polyp highlighting in colonoscopy: Validation vs. saliency maps from physicians"
+    journal: "Computerized Medical Imaging and Graphics"
+    volume: 43
+    year: 2015
+    doi: 10.1016/j.compmedimag.2015.02.007

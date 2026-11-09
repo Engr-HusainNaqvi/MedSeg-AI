@@ -1,0 +1,102 @@
+{
+ "effb0": {
+  "model": "unet_effb0",
+  "params_m": 4.418893,
+  "gmacs": 1.109453312,
+  "latency_ms": 84.08130000316305,
+  "latency_1thread_ms": 81.59199999499833,
+  "val_dice_select": 0.9027571493510586,
+  "epoch": 20,
+  "mtime": 1794227443.4807181
+ },
+ "mnv3l": {
+  "model": "unet_mnv3l",
+  "params_m": 3.164017,
+  "gmacs": 0.420470656,
+  "latency_ms": 64.24829999741632,
+  "latency_1thread_ms": 51.586049994511995,
+  "val_dice_select": 0.8858366533877018,
+  "epoch": 27,
+  "mtime": 1794207424.0477536
+ },
+ "mnv3l_bd": {
+  "model": "unet_mnv3l",
+  "params_m": 3.164017,
+  "gmacs": 0.420470656,
+  "latency_ms": 64.56710000202293,
+  "latency_1thread_ms": 50.353850005194545,
+  "val_dice_select": 0.8836254814833522,
+  "epoch": 29,
+  "mtime": 1794207424.0477536
+ },
+ "mnv3l_kd": {
+  "model": "unet_mnv3l",
+  "params_m": 3.164017,
+  "gmacs": 0.420470656,
+  "latency_ms": 65.25459999829764,
+  "latency_1thread_ms": 51.65954999392852,
+  "val_dice_select": 0.8800960434788696,
+  "epoch": 19,
+  "mtime": 1794207424.0477536
+ },
+ "mnv3l_kdbd": {
+  "model": "unet_mnv3l",
+  "params_m": 3.164017,
+  "gmacs": 0.420470656,
+  "latency_ms": 65.91259999549948,
+  "latency_1thread_ms": 51.96184999658726,
+  "val_dice_select": 0.8855332055779636,
+  "epoch": 16,
+  "mtime": 1794207424.0477536
+ },
+ "mnv3s": {
+  "model": "unet_mnv3s",
+  "params_m": 0.988361,
+  "gmacs": 0.139091968,
+  "latency_ms": 37.79495000344468,
+  "latency_1thread_ms": 29.455800002324395,
+  "val_dice_select": 0.8614147483780065,
+  "epoch": 29,
+  "mtime": 1794207424.0477536
+ },
+ "mnv3s_kdbd": {
+  "model": "unet_mnv3s",
+  "params_m": 0.988361,
+  "gmacs": 0.139091968,
+  "latency_ms": 39.49395000381628,
+  "latency_1thread_ms": 29.234700006782077,
+  "val_dice_select": 0.8635454266897419,
+  "epoch": 22,
+  "mtime": 1794207424.0477536
+ },
+ "r34": {
+  "model": "unet_r34",
+  "params_m": 24.436241,
+  "gmacs": 7.8413824,
+  "latency_ms": 249.66580000182148,
+  "latency_1thread_ms": 335.0059500007774,
+  "val_dice_select": 0.8961255461893746,
+  "epoch": 28,
+  "mtime": 1794207424.0477536
+ },
+ "segformer": {
+  "model": "segformer_b0",
+  "params_m": 3.714401,
+  "gmacs": 1.756102656,
+  "latency_ms": 113.14185000082944,
+  "latency_1thread_ms": 128.92245000693947,
+  "val_dice_select": 0.890559741506583,
+  "epoch": 26,
+  "mtime": 1794227443.4808936
+ },
+ "unet_tiny": {
+  "model": "unet_tiny",
+  "params_m": 1.964097,
+  "gmacs": 3.534225408,
+  "latency_ms": 143.82055000169203,
+  "latency_1thread_ms": 195.41279999248218,
+  "val_dice_select": 0.7378783083788883,
+  "epoch": 29,
+  "mtime": 1794207424.0477536
+ }
+}

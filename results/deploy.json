@@ -1,0 +1,78 @@
+{
+ "mnv3l": {
+  "model": "unet_mnv3l",
+  "torch_latency_ms": 63.45530001271982,
+  "torch_latency_1thread_ms": 50.36619999737013,
+  "fp32": {
+   "size_mb": 12.059041023254395,
+   "latency_ms_1t": 17.35170000756625,
+   "latency_ms_4t": 13.627199994516559,
+   "dice_test": 0.8779391227945745,
+   "dice_external": 0.8378652424987006
+  },
+  "int8": {
+   "size_mb": 3.528855323791504,
+   "latency_ms_1t": 21.271100005833432,
+   "latency_ms_4t": 16.56150000053458,
+   "dice_test": 0.8266642356652734,
+   "dice_external": 0.7219340141253271
+  }
+ },
+ "mnv3s": {
+  "model": "unet_mnv3s",
+  "torch_latency_ms": 36.896399993565865,
+  "torch_latency_1thread_ms": 29.78620000067167,
+  "fp32": {
+   "size_mb": 3.782151222229004,
+   "latency_ms_1t": 7.913499997812323,
+   "latency_ms_4t": 4.821399998036213,
+   "dice_test": 0.8587734350976374,
+   "dice_external": 0.8102889499159025
+  },
+  "int8": {
+   "size_mb": 1.2981548309326172,
+   "latency_ms_1t": 12.149200003477745,
+   "latency_ms_4t": 9.910100008710288,
+   "dice_test": 0.31495807702678374,
+   "dice_external": 0.24269279539128644
+  }
+ },
+ "segformer": {
+  "model": "segformer_b0",
+  "torch_latency_ms": 116.09029999817722,
+  "torch_latency_1thread_ms": 133.25470000563655,
+  "fp32": {
+   "size_mb": 14.323600769042969,
+   "latency_ms_1t": 98.63849999965169,
+   "latency_ms_4t": 68.48109999555163,
+   "dice_test": 0.8806457959819336,
+   "dice_external": 0.8452932650485983
+  },
+  "int8": {
+   "size_mb": 4.400642395019531,
+   "latency_ms_1t": 83.52800000284333,
+   "latency_ms_4t": 57.79040000925306,
+   "dice_test": 0.8750030018125983,
+   "dice_external": 0.8265336394127636
+  }
+ },
+ "r34": {
+  "model": "unet_r34",
+  "torch_latency_ms": 259.6598000091035,
+  "torch_latency_1thread_ms": 337.5693999987561,
+  "fp32": {
+   "size_mb": 93.20527362823486,
+   "latency_ms_1t": 185.2301000035368,
+   "latency_ms_4t": 121.94979999912903,
+   "dice_test": 0.8798008209912027,
+   "dice_external": 0.8420217301259011
+  },
+  "int8": {
+   "size_mb": 23.54580783843994,
+   "latency_ms_1t": 114.33699999179225,
+   "latency_ms_4t": 76.57830000971444,
+   "dice_test": 0.864643544306851,
+   "dice_external": 0.8284544427370889
+  }
+ }
+}

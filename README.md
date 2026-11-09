@@ -1,6 +1,6 @@
 # MedSeg-AI: Efficient & Accurate Algorithms for Medical Image Segmentation
 
-**Project 10 · Husain Naqvi · 2026** · polyp segmentation in colonoscopy · [findings write-up](docs/FINDINGS.md) · [figure gallery](https://engr-husainnaqvi.github.io/MedSeg-AI/)
+**Project 10 · Husain Naqvi · 2026** · polyp segmentation in colonoscopy · **Live app: https://polypseg-studio.streamlit.app/** · [findings write-up](docs/FINDINGS.md) · [figure gallery](https://engr-husainnaqvi.github.io/MedSeg-AI/)
 
 The study asks which segmentation algorithm gives **the most accuracy per millisecond of CPU**, keeps it **on another hospital's data**, and **knows when it is wrong**. It benchmarks 5 candidate families (unsupervised clustering, gradient-boosted pixel classifiers, mobile CNN U-Nets, a SegFormer transformer and a ResNet-34 U-Net) and 5 hybrid methodologies (knowledge distillation, boundary loss, ConvCRF, TTA + MC-dropout uncertainty, and ensembling + INT8 deployment). Models are trained on **Kvasir-SEG** and tested on a held-out Kvasir split and on **CVC-ClinicDB**, an external centre whose 612 frames are never seen in training or model selection.
 
